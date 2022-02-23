@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x' crossorigin='anonymous'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Put Car Up For Sale</h2>
+                    <a href="/logout">Logout</a>
+                    <a href="/dashboard">dashboard</a>
+                    <form action="/cars/create" method="post">
+                        <label for="price">price</label>
+                        <input type="int" name="price" class="form-control">
+                        {% for error in get_flashed_messages(category_filter = ['price']) %}
+                            <p class="alert alert-danger">{{ error }}</p>
+                        {% endfor %}
+                        <label for="model">model</label>
+                        <input type="model" name="model" class="form-control">
+                        <label for="make">make</label>
+                        <input type="make" name="make" class="form-control">
+                        <label for="year">year</label>
+                        <input type="int" name="year" class="form-control">
+                        {% for error in get_flashed_messages(category_filter = ['year']) %}
+                            <p class="alert alert-danger">{{ error }}</p>
+                        {% endfor %}
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">description</label>
+                            <textarea class="form-control" name = "description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <br>
+                        <input type="submit" value="Add" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
